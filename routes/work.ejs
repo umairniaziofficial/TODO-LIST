@@ -1,0 +1,39 @@
+<%- include('header') %>
+<div class="container">
+  <div class="TODO-Heading">
+    <h1><%= title %></h1>
+  </div>
+  <div class="list-item">
+    <% for (let i = 0; i < workList.length; i++) { %>
+    <form action="/workdelete/<%= workList[i]._id %>" method="post">
+      <div class="item">
+        <div class="todo-box">
+          <input
+            type="checkbox"
+            name="thisDelete"
+            onchange="this.form.submit()"
+          />
+          <h2><%- workList[i].name %></h2>
+        </div>
+      </div>
+    </form>
+    <% } %>
+  </div>
+  <div class="input-box">
+    <form
+      action="<%= formAction %>"
+      method="post"
+      class="form-input"
+      onsubmit="return notempty()"
+    >
+      <input
+        type="text"
+        name="task"
+        class="in"
+        placeholder="Enter <%= category %> item Here"
+      />
+      <button type="submit">+</button>
+    </form>
+  </div>
+</div>
+<%- include('footer') %>

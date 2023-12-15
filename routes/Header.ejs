@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>TODO LIST APP</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        margin: 0;
+        color: white;
+        background: rgb(171, 229, 255);
+        background: linear-gradient(
+          162deg,
+          rgba(171, 229, 255, 1) 50%,
+          rgba(171, 216, 255, 1) 50%
+        );
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        padding: 30px;
+        color: black;
+        align-items: center;
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav .logo h2 {
+        letter-spacing: 10px;
+      }
+
+      .nav-list {
+        display: flex;
+      }
+
+      .nav-list div {
+        margin: 0px 10px;
+        transition: 0.3s ease-in-out;
+      }
+
+      .nav-list div:hover {
+        scale: 1.2;
+      }
+
+      .nav-list a {
+        text-decoration: none;
+        color: black;
+        font-weight: 600;
+        transition: 0.3s ease-in-out;
+      }
+
+      .nav-list a:hover {
+        border-bottom: 2px solid black;
+        padding: 2px 0;
+        color: black;
+        font-weight: 900;
+      }
+
+      footer {
+        display: flex;
+        padding: 30px;
+        color: black;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      .footer-text {
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
+        font-weight: 800;
+        text-align: center;
+      }
+      footer .social {
+        display: flex;
+      }
+      .social div {
+        transition: 0.3s ease-in-out;
+        margin: 0px 10px;
+      }
+
+      .social div:hover {
+        scale: 1.6;
+      }
+
+      .social div a {
+        text-decoration: none;
+        font-weight: 800;
+      }
+      i {
+        font-size: 22px;
+        font-weight: 700;
+        color: black;
+      }
+      i:hover {
+        color: rgb(42, 42, 42);
+      }
+
+      .container {
+        display: flex;
+        overflow: hidden;
+        min-height: 100vh;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .container > div {
+        margin-bottom: 30px;
+      }
+
+      form {
+        display: flex;
+        align-items: center;
+      }
+
+      input[type="checkbox"],
+      input[type="text"] {
+        padding: 8px;
+        margin-right: 8px;
+      }
+
+      input[type="text"] {
+        display: flex;
+        width: 355px;
+        font-family: "Roboto", sans-serif;
+        padding-left: 20px;
+        margin: 0;
+        border: 2px solid #014d04;
+        border-radius: 4px 0 0 4px;
+        font-weight: 700;
+      }
+      input[type="text"]::placeholder {
+        font-weight: 900;
+        font-family: "Roboto", sans-serif;
+      }
+
+      input[type="checkbox"] {
+        width: 22px;
+        height: 30px;
+      }
+
+      button {
+        padding: 4.6px 15px;
+        background-color: #4caf50;
+        font-weight: 700;
+        border: 2px solid #014d04;
+        border-left: 0;
+        font-size: 22px;
+        border-radius: 0px 4px 4px 0;
+        color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      .TODO-Heading {
+        justify-content: center;
+        align-items: center;
+        font-weight: 900;
+        font-family: sans-serif;
+        background-color: black;
+        border-radius: 3px;
+        padding: 10px 130px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .list-item {
+        display: flex;
+        margin: 0px 80px;
+        flex-direction: column;
+      }
+
+      .list-item form {
+        margin-bottom: 10px;
+      }
+
+      .todo-box {
+        display: flex;
+        margin: 10px 0;
+        width: 100%;
+        padding: 10px;
+        color: black;
+        margin-bottom: 8px;
+        border-radius: 4px;
+      }
+
+      .item {
+        width: fit-content;
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      .todo-box h2 {
+        font-weight: 700;
+        padding: 0px 10px;
+        margin-left: 30px;
+      }
+
+      .item {
+        flex-direction: column;
+      }
+
+      @media screen and (max-width: 600px) {
+        header {
+          flex-direction: column;
+          text-align: center;
+        }
+        .container {
+          min-height: fit-content;
+        }
+
+        .nav-list {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .nav-list div {
+          margin: 5px 0;
+        }
+
+        header .nav {
+          margin-bottom: 30px;
+        }
+
+        .container {
+          padding: 10px;
+        }
+
+        input[type="text"] {
+          width: 100%;
+        }
+
+        .list-item {
+          margin: 0 10px; /* Adjusted margin for smaller screens */
+        }
+
+        .list-item form {
+          margin-bottom: 5px; /* Adjusted margin for smaller screens */
+        }
+        .TODO-Heading {
+          padding: 10px 70px;
+        }
+        footer {
+          margin-top: 130px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <div class="logo">
+          <h2>NIZZY TODO</h2>
+        </div>
+      </div>
+      <div class="nav-list">
+        <div><a href="/">Home</a></div>
+        <div><a href="/work">Work</a></div>
+        <div><a href="#social">Social</a></div>
+      </div>
+    </header>
+  </body>
+</html>

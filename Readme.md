@@ -1,3 +1,4 @@
+> All other commits were deleted due to the accidental revelation of the username and password.
 # Todo List Deployed on Heroku
 
 This is deployed on Heroku having the following features:
